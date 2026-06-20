@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCHERS By GPTC</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Work+Sans:wght@400;700;900&amp;family=Inconsolata:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#646464",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "primary": "#0041c8",
+                        "surface-tint": "#004dea",
+                        "surface-container": "#eeeeee",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#972500",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#434656",
+                        "tertiary-fixed": "#ffdbd1",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "primary-container": "#0055ff",
+                        "surface-container-low": "#f3f3f4",
+                        "inverse-primary": "#b6c4ff",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "on-primary-container": "#e3e6ff",
+                        "outline-variant": "#c3c5d9",
+                        "inverse-on-surface": "#f0f1f1",
+                        "secondary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-fixed": "#001551",
+                        "on-primary-fixed-variant": "#0039b3",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "secondary-container": "#e2e2e2",
+                        "outline": "#737688",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-container": "#c13301",
+                        "secondary": "#5e5e5e",
+                        "on-tertiary-fixed": "#3b0900",
+                        "inverse-surface": "#2f3131",
+                        "background": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ffe1d9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "border-width-thin": "1px",
+                        "border-width-thick": "3px",
+                        "margin-desktop": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Archivo Narrow"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-xl": ["Archivo Narrow"],
+                        "body-md": ["Archivo Narrow"],
+                        "headline-lg-mobile": ["Archivo Narrow"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "code-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "body-md": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            cursor: url('cursor.png'),auto;
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .blueprint-grid {
+            background-image: 
+                linear-gradient(to right, #e2e2e2 1px, transparent 1px),
+                linear-gradient(to bottom, #e2e2e2 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        button,a{
+            cursor: url('cursor.png'),pointer;
+        }
+        .brutalist-shadow {
+            box-shadow: 4px 4px 0px #000000;
+        }
+        .brutalist-shadow-active {
+            box-shadow: 0px 0px 0px #000000;
+            transform: translate(4px, 4px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-white border-b border-outline-variant h-16 transition-all duration-200 ease-in-out">
+<div class="max-w-container-max mx-auto h-full flex justify-between items-center px-gutter">
+<div class="flex items-center gap-stack-sm"><div class="flex items-center gap-1 scale-110 origin-left"><img alt="ARCHERS Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY0WnLsrX1nlqoynBtWct0EzREUN3AIOmVWiEi6cBPcQ1Fr9zX_rQM6GQgKcT3qUaKVSzJ7s_UGU3TQvNOFB0IcWuuYlSFDUpae3Kx8IlFWrPjM0SUs0tt6r7FwVBW9xLYxLSlH2sAqIaRqmVy0C-0xHDJJ2YLsBHEK1tztoS3wjCttAyIxkl2q6FGjkXVVxkf4i8xKv2zsqKxJoiG9WekLGW1DGB6btgK7cjEqWS4dt3j-_byCCL3yJ43RGsuZQUfdwFg1V8vP1c"><span class="font-headline-md text-[40px] leading-none text-primary tracking-tighter -ml-1">rchers</span>
+
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps ml-8 text-label-caps uppercase hover:text-primary transition-colors" href="#workshops">Workshops</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#events">Events</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#team">Team</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#community">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface dark:text-surface cursor-pointer">schedule</span>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 border border-on-surface hover:bg-on-surface hover:text-surface transition-all duration-100 active:translate-x-1 active:translate-y-1">
+                JOIN_COMMUNITY
+            </button>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col justify-center items-start px-margin-mobile md:px-margin-desktop overflow-hidden border-b-border-width-thick border-on-surface">
+<div class="absolute inset-0 blueprint-grid opacity-50 -z-10"></div>
+<div class="max-w-6xl">
+<p class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase reveal-text"></p>
+<h1 class="font-headline-xl text-headline-xl uppercase reveal-text mb-2">ARCHERS</h1>
+<h2 class="font-headline-lg text-headline-lg text-on-surface-variant mb-8 reveal-text">ENGINEER THE FUTURE</h2>
+<p class="font-body-md text-body-md max-w-2xl mb-12 reveal-text">
+                    Association of Computer Science &amp; Technology Students, Government Polytechnic College Attingal. 
+                    <br> Building the next generation of developers, innovators, and technology leaders.
+                    <p class="font-label-caps text-label-caps text-primary uppercase mt-4 mb-8">
+                        Learn. Build. Innovate.
+                    </p>
+                </p>
+                
+                
+<div class="flex flex-wrap gap-4 reveal-text">
+<button class="bg-primary-container text-on-primary-container border-border-width-thick border-on-surface px-8 py-4 font-label-caps text-label-caps uppercase brutalist-shadow active:brutalist-shadow-active transition-all">
+                        Join ARCHERS
+                    </button>
+<button class="bg-surface text-on-surface border-border-width-thick border-on-surface px-8 py-4 font-label-caps text-label-caps uppercase hover:bg-on-surface hover:text-surface transition-all">
+                        Explore Events
+                    </button>
+</div>
+</div>
+<!-- Technical Metadata Decoration -->
+<div class="absolute bottom-8 right-margin-desktop hidden lg:block text-right">
+<div class="font-code-md text-code-md text-outline"></div>
+<div class="font-code-md text-code-md text-outline"></div>
+<div class="font-code-md text-code-md text-primary mt-2"></div>
+</div>
+</section>
+<!-- About ARCHERS Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 border-b-border-width-thick border-on-surface" id="about">
+<div class="md:col-span-4 p-margin-mobile md:p-margin-desktop bg-on-surface text-surface flex flex-col justify-between">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase reveal-text">01 // THE<br/>IDENTITY</h3>
+<div class="font-label-caps text-label-caps text-surface-variant reveal-text mt-8">EST. 2026</div>
+</div>
+<div class="md:col-span-8 p-margin-mobile md:p-margin-desktop bg-surface reveal-text relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 pointer-events-none grayscale">
+<img alt="Technical Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtU5gacuEu9u_VwVq5wd7n_dYYh4PiaHag9oGMNoXHVAG8DkRYoQa5IesrdF80-JMpXCb3rKTOqv928NCVuml5pgVvZY_rra1RZ2QnJ6FyMRZulK2zfANS67BbN9T8bMMZc5ba1lN8H_Nqpc7JdP6IdJfZIFZ00d1gs73WAptXi5ZvOYTNAmn7SUx80qtsHIHhBmaMUjRBYREy1nNEo1G7uonTkc7emzK2z4miRu3ISnvuKGSmhZV66OA"/>
+</div>
+<div class="relative z-10">
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight mb-8">
+                        ARCHERS IS NOT JUST AN ASSOCIATION. MOVE BEYOND <span class="text-primary">TEXTBOOKS</span> AND START <span class="text-primary">CREATING</span>.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                       From workshops to real-world projects, ARCHERS creates opportunities for students to learn, build, and grow together. We believe the best way to learn technology is by creating with others.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Mission Grid -->
+<section class="border-b-border-width-thick border-on-surface" id="mission">
+<div class="grid grid-cols-1 md:grid-cols-3">
+<div class="border-b md:border-b-0 md:border-r border-on-surface p-margin-mobile md:p-margin-desktop hover:bg-primary transition-colors group">
+<span class="material-symbols-outlined text-4xl mb-6 group-hover:text-surface">psychology</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-4 group-hover:text-surface">Learn</h4>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary">Learn beyond the classroom through practical experience and teamwork.</p>
+</div>
+<div class="border-b md:border-b-0 md:border-r border-on-surface p-margin-mobile md:p-margin-desktop hover:bg-primary transition-colors group">
+<span class="material-symbols-outlined text-4xl mb-6 group-hover:text-surface">laptop</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-4 group-hover:text-surface">Build</h4>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary">Turn ideas into real projects using modern technologies and teamwork.</p>
+</div>
+<div class="p-margin-mobile md:p-margin-desktop hover:bg-primary transition-colors group">
+<span class="material-symbols-outlined text-4xl mb-6 group-hover:text-surface">rocket_launch</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-4 group-hover:text-surface">Innovate</h4>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary">Explore emerging technologies and create solutions for real-world challenges.</p>
+</div>
+</div>
+</section>
+<!-- Workshops Grid -->
+<section class="p-margin-mobile md:p-margin-desktop border-b-border-width-thick border-on-surface bg-surface-container-low" id="workshops">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h3 class="font-headline-lg text-headline-lg uppercase mb-2">Technical Workshops</h3>
+<p class="font-code-md text-code-md text-primary uppercase">[ BUILDING SKILLS BEYOND CLASSROOMS ]</p>
+</div>
+<button class="hidden md:block font-label-caps text-label-caps border border-on-surface px-6 py-2 hover:bg-on-surface hover:text-surface transition-all">VIEW_SCHEDULE</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2 bg-surface border-border-width-thick border-on-surface p-6 brutalist-shadow flex flex-col justify-between min-h-[320px]">
+<div>
+<div class="flex justify-between items-start mb-50">
+<span class="font-code-md text-code-md bg-on-surface text-surface px-2">MOD_01</span>
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-4">DESIGN WITH AI</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Learn to create websites, interfaces, and digital experiences using modern AI-powered design tools.</p>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<span class="font-label-caps text-label-caps">OCT 12</span>
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<div class="bg-surface border border-on-surface p-6 flex flex-col justify-between">
+<div>
+<span class="font-code-md text-code-md border border-on-surface px-2">MOD_02</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mt-4 mb-2">TYPING SPEED CHALLENGEs</h4>
+<p class="font-code-md text-code-md text-on-secondary-container">Test your typing speed, accuracy, and consistency in a competitive real-time environment.</p>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<span class="font-label-caps text-label-caps">OCT 17</span>
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<div class="bg-on-surface text-surface border border-on-surface p-6 flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-code-md text-code-md bg-surface text-on-surface px-2">MOD_03</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mt-4 mb-2">BLIND CODING CHALLENGE</h4>
+<p class="font-code-md text-code-md text-surface-variant">
+Test your ability to write accurate code without seeing the screen.</p>
+</div>
+<div class="mt-4 pt-4 border-t border-surface-variant/20 relative z-10">
+<span class="font-label-caps text-label-caps uppercase text-primary">Priority List</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sports & eSports Events Section -->
+<section class="border-b-border-width-thick border-on-surface overflow-hidden bg-on-surface" id="events">
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="h-[600px] relative group overflow-hidden border-r border-on-surface">
+<img alt="Mini Militia Tournament" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AP1WRLujeAKo9Rp1iKphRGTMEAYMKXwz1seNAuKow7r9IBB3HFutYA2LTQuU23TGNTREvh8B6G4qz04RdI8tc3N8vYfb1hshc8ynW125zP22Nyo7fCqTsy0shxSv0iX2ZUQYbOGyTOr_kockzlyLIn6N9VD3w_DsOhLDTE1i0cxblDtLLWfiHV82DZk3LGRi30MQoLnxR5S8cBSB8LpSdPoyJ2zsAQ_oTxSKKlJXFPd4Y9jtHm7n_VQfQd4VY1Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-margin-desktop text-surface">
+<div class="font-label-caps text-label-caps mb-2 text-primary">EVENT_TYPE: ESPORTS</div>
+<h3 class="font-headline-xl text-headline-lg-mobile md:text-headline-lg uppercase mb-4">MINI MILITIA TOURNAMENT</h3>
+<p class="font-body-md text-body-md max-w-sm mb-6 text-surface-variant">Join the ultimate battle! Show off your skills in our upcoming multiplayer combat tournament.</p>
+</div>
+</div>
+<div class="p-margin-mobile md:p-margin-desktop bg-surface flex flex-col justify-center border-t md:border-t-0 border-on-surface">
+<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-8">EVENT_SPECIFICATIONS</h4>
+<div class="space-y-4 mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<div class="font-code-md text-code-md uppercase">Date: October 25, 2026</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<div class="font-code-md text-code-md uppercase">Time: 10:00 AM - 04:00 PM</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<div class="font-code-md text-code-md uppercase">Location: Computer Lab 1</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-12 py-5 font-label-caps text-label-caps uppercase brutalist-shadow active:brutalist-shadow-active transition-all self-start">
+                        Register Now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Technical Command (8 Members) -->
+<section class="p-margin-mobile md:p-margin-desktop border-b-border-width-thick border-on-surface" id="team">
+<h3 class="font-headline-lg text-headline-lg uppercase mb-16">MEET THE TEAM</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Member 1 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Arjun V." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvdGRE46w0Nm06sHYkj4EpE-OLgTzUJlmxEZJ7xA4z7c7FhOCNsUswWQLp7_Zu5RbDZieBvCxrrUvJSq5A33BLWuauwB7X1ks2zgW5y7v5EhVFzpzeos1cRy66SPWAE04TyANss-igSglQYHU72KQ8WXkxdfh11WxJTGcPgUsxTSnh17T8KrvJJ0ny5ZQRjpCCIH_f2KmSw6FR7btJgx6IMAIox_27vIT8KreJzoQC61-MXH57TXCEyQw"/>
+<div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Arjun V.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Chairperson</p>
+</div>
+<!-- Member 2 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Sneha R." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLti_9SoTfDtYxq6ufM0iAd7DCqIS5wEd8BIqrC9H0icCX2m2EHur4KNWjoA-LOyr0vAdGdzUSeWcjOnIIRcYpzQ4N_TMH2BZlFc-6vcFZ0VSMCztbwyElfkBs9J2SxL8K5ZMZZg9kjwvu3yTcNA0_cF955na3AJjJBPPvIZBuoBVGvU7rWtAapIDXHQq0hxt5v4VyvbKr2UH9KZPIbUH8SGLIwk9IVz-hm0RdzBczpgL0vfCSUhka-V0yg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Sneha R.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Vice Chairperson</p>
+</div>
+<!-- Member 3 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Rahul S." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvtt14PzaEoNcnceGR1gPipeBIpORGKUAu2Kgiy49hm9J-C7U_JVvtSE2smJI6_jXdG2XjaRgWIWuoAd3kPxLOhMz__v4TQIhf9hX4P_AbkoGBWudjyWPjAeI6FkXAWeceP0kzha14p7GoBQyVaqFzJknxb_lsGzcFiXBY8Xwz9xHxNE9seOmpZb2pzxjAD8cKsjGrJZsE90_wqa2d5QyyVOljv2ZLbKECGgIYH2AP2B2e4UP-50skbGw"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Rahul S.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Secretary</p>
+</div>
+<!-- Member 4 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Meera K." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvOo3GSAiikVS4h21rkZ9y-VN5O-4HiepZT_4JKcCFodIba8Pm_P21majU-NpImFZ0SK2z0uVw-DL7F7-ZZWtvG84cctSP59MsWNQ-kCuODzVkEwcoqxKAy60s07k_32iCEQfex_kUZPD7Z07ZId-T1mJLF1GpC0JQLN2ndrMT0UDn51VoK2CuueE5vhkgsbR2jxyrxio8qugErqBdb-1JBkuPKwhMkjuDEAp9UwSoCm2pQS5P5E_iY0pA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Meera K.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Joint Secretary</p>
+</div>
+<!-- Member 5 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Vikram S." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLv_y_ERdxpB7dGIaNX2rE5ZhKpeGEqCSMC6AtQSZ_Bd4PEGUrTSEU9rTq1BWRU7fqiZoCHy8KxPnFtqsVizK6AllaAz-48UFw6XJxNjc-dyvngi4UEbXkP-3K_4Hnh_2Pc3O6TAE4ZnUa3bX_xe1bEg9kgrvcI3gWDNKdwxVmgke02PT6dBoVHTVuNaVnlCEGS_MwemPiyZiHW3lX8_RVlaS0UT62DWs0QqhKNF46uteBg41Sp2wc3n5cY"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Vikram S.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Technical Coordinator</p>
+</div>
+<!-- Member 6 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Anjali M." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLv08jMmKTDVyVRxhbyvMcKrz6ivaGLjZYkOOLsdY6QIUJCAYWitmv9AR-TVx5_ux6Lw3tHljVhqRsva22e84zxkMFzgoxlZ9i17CGweUNXvhzyQl9PqfjjHrx_0y1bSO4RYBDftUPu-l12kqgCciLI9paivnoaGqdkY09MF69DqXDbwiYgg02BeyK2PmKk05WrHnQYePPGc-vi8lBjSHXczDqeI2g3Lf4acJhBrQoS82BvmkSXUq_ptd00"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Anjali M.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Event Coordinator</p>
+</div>
+<!-- Member 7 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Rohan K." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLtJIZXvW8FJW28N-EXyT55T18Sf8z3abxaSI-bk3Yiu-0kwQLd7P0or1P1Vdf4QSSeQHZMqLiucAPE9xuqKjizsLFpOcl5Ud75Z42o6utm8MCAF7OcJOAeCnSzhsTweIvnofDRcCmKxOOqOUa5sc-YihLHWoho6_DcLYGejBnGu9_VMx4MRXlU9PhaUzc3VDlHeKF1FRcolQWp3eOYyyHiCOFDNKvvHR9UsEJ-uUv3VAVx0_McWj97g14k"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Rohan K.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Community Coordinator</p>
+</div>
+<!-- Member 8 -->
+<div class="group">
+<div class="relative mb-6 border border-on-surface overflow-hidden aspect-[3/4] bg-surface-variant">
+<img alt="Karthik P." class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs1-cV1bxwf6STHkRPUSjug7ppdZ64b3_HeOm9XwT7KCf_QBLBUt5QfbdmlNJ7XzPZE3QkcltMffZfdULVRxEj_qM3M20BeyvmFCzE1ysm-0fd9KSe94p0esouuqxc4KOff24fY3nXmlcuzHIgNJTXtDxQCZ5_s6AUkQHtAzAuHkYw1UVE5-V8Rx3yVf-ZJ_sImI12kKOAx-hkeBPryb2V1cetAARasxlWgk925HucJ1qi1EtMmf7kdsPA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h5 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">Karthik P.</h5>
+<p class="font-label-caps text-label-caps text-primary uppercase mb-2">Media & Design Coordinator</p>
+</div>
+</div>
+</section>
+<!-- Achievements -->
+<section class="border-b-border-width-thick border-on-surface">
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="p-margin-mobile md:p-margin-desktop bg-primary text-on-primary">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-8">ASSOCIATION ROADMAP</h3>
+<div class="space-y-8">
+<div class="border-l-2 border-on-primary pl-6 py-2">
+
+<h6 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">1.ARCHERS LAUNCH</h6>
+<p class="font-body-md text-body-md text-on-primary-container">Official launch of the Association of Computer Science & Technology Students.</p>
+</div>
+<div class="border-l-2 border-on-primary pl-6 py-2">
+
+<h6 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">2.FIRST TECH WORKSHOP</h6>
+<p class="font-body-md text-body-md text-on-primary-container">Practical training sessions designed to develop technical skills beyond the classroom.</p>
+</div>
+<div class="border-l-2 border-on-primary pl-6 py-2">
+<!--<span class="font-code-md text-code-md uppercase block">2026</span>-->
+<h6 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">3.COMMUNITY EVENTS</h6>
+<p class="font-body-md text-body-md text-on-primary-container">Competitions, challenges, and collaborative events that transform learning into real-world experience.</p>
+</div>
+</div>
+</div>
+<!--<div class="p-margin-mobile md:p-margin-desktop bg-surface flex flex-col justify-center">
+<div class="grid grid-cols-2 gap-8 text-center">
+<div>
+<div class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">50+</div>
+<div class="font-label-caps text-label-caps uppercase">Active Engineers</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface">12</div>
+<div class="font-label-caps text-label-caps uppercase">Live Projects</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface">08</div>
+<div class="font-label-caps text-label-caps uppercase">Workshops Completed</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">100%</div>
+<div class="font-label-caps text-label-caps uppercase">Success Rate</div>
+</div>
+</div>
+</div>
+</div>-->
+</section>
+<!-- Join Community CTA -->
+<section class="p-margin-mobile md:p-margin-desktop text-center bg-on-surface text-surface" id="community">
+<div class="max-w-4xl mx-auto py-16">
+<h3 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl uppercase mb-8">Ready to Engineer the Future?</h3>
+<p class="font-body-md text-body-md text-surface-variant mb-12">
+                    Become part of a student community dedicated to learning, building, and innovating together.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary text-on-primary px-12 py-5 font-label-caps text-label-caps uppercase brutalist-shadow hover:bg-surface hover:text-on-surface transition-all">JOIN ARCHERS</button>
+<button class="border border-surface text-surface px-12 py-5 font-label-caps text-label-caps uppercase hover:bg-surface hover:text-on-surface transition-all">LEARN MORE</button>
+</div>
+</div>
+</section>
+<!-- Contact Form -->
+<section class="border-t-border-width-thick border-on-surface bg-surface grid grid-cols-1 md:grid-cols-2">
+<div class="p-margin-mobile md:p-margin-desktop border-b md:border-b-0 md:border-r border-on-surface">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-8">GET IN TOUCH</h3>
+<form class="space-y-6">
+<div class="group">
+<label class="font-label-caps text-label-caps uppercase block mb-2 text-primary">NAME</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-on-surface focus:ring-0 focus:border-primary transition-all p-2 font-code-md text-code-md" placeholder="Enter your name" type="text"/>
+</div>
+<div class="group">
+<label class="font-label-caps text-label-caps uppercase block mb-2 text-primary">EMAIL ADDRESS</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-on-surface focus:ring-0 focus:border-primary transition-all p-2 font-code-md text-code-md" placeholder="yourname@example.com" type="email"/>
+</div>
+<div class="group">
+<label class="font-label-caps text-label-caps uppercase block mb-2 text-primary">MESSAGE</label>
+<textarea class="w-full bg-transparent border-t-0 border-x-0 border-b border-on-surface focus:ring-0 focus:border-primary transition-all p-2 font-code-md text-code-md" placeholder="ENTER YOUR MESSAGE" rows="4"></textarea>
+</div>
+<button class="w-full md:w-auto bg-on-surface text-surface font-label-caps text-label-caps uppercase px-12 py-4 hover:bg-primary transition-all">CONTACT US</button>
+</form>
+</div>
+<div class="p-0 h-[400px] md:h-full grayscale">
+<div class="w-full h-full">
+    <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1972.0144731313183!2d76.828664!3d8.688797!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3fb4b034ee871c0!2sGovt.%20Polytechnic%20College%20Attingal!5e0!3m2!1sen!2sin!4v1671526608906!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-on-surface dark:bg-surface-container-lowest text-surface border-t-border-width-thick border-on-surface">
+<div class="flex flex-col gap-2">
+<span class="font-headline-lg text-headline-lg text-surface uppercase">ARCHERS</span>
+<p class="font-code-md text-code-md uppercase opacity-60">©2026 ARCHERS TECHNICAL COMMAND. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-code-md text-code-md uppercase hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="font-code-md text-code-md uppercase hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="font-code-md text-code-md uppercase hover:text-primary transition-colors" href="#">Archive</a>
+</div>
+</footer>
+<script>
+        // Clock functionality
+        function updateClock() {
+            const now = new Date();
+            const time = now.toISOString().split('T')[1].split('.')[0] + ' UTC';
+            const clockEl = document.getElementById('clock');
+            if(clockEl) clockEl.textContent = time;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Reveal animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+
+        // Interaction micro-effects
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('translate-x-1', 'translate-y-1'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('translate-x-1', 'translate-y-1'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('translate-x-1', 'translate-y-1'));
+        });
+    </script>
+</body></html>

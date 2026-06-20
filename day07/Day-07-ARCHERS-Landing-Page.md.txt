@@ -1,0 +1,118 @@
+# 🚀 Day 07 - ARCHERS Landing Page Project
+
+## Overview
+
+Today I built and deployed the first version of the ARCHERS landing page.
+
+ARCHERS is the Association of Computer Science & Technology Students of Government Polytechnic College Attingal.
+
+This project focused on transforming a design concept into a functional, responsive landing page while learning real-world frontend development workflows.
+
+---
+
+## Project Goals
+
+- Build a complete landing page
+- Practice HTML structure
+- Improve CSS styling and layout skills
+- Understand branding and content hierarchy
+- Learn deployment workflow
+
+---
+
+## Features Implemented
+
+### Hero Section
+
+- ARCHERS branding
+- Main headline
+- Mission statement
+- Call-to-action buttons
+
+### Association Identity
+
+- Introduction to ARCHERS
+- Vision and purpose
+
+### Mission Section
+
+- Learn
+- Build
+- Innovate
+
+### Workshops Section
+
+- Design with AI
+- Typing Speed Challenge
+- Blind Coding Challenge
+
+### Events Section
+
+- Mini Militia Tournament
+- Event details
+- Registration CTA
+
+### Team Section
+
+- Leadership showcase
+- Committee structure
+
+### Roadmap Section
+
+- ARCHERS Launch
+- Technical Workshops
+- Community Events
+
+### Contact Section
+
+- Contact form
+- Embedded college location map
+
+---
+
+## Technologies Used
+
+- HTML5
+- Tailwind CSS
+- JavaScript
+- Google Fonts
+- Netlify
+
+---
+
+## Deployment
+
+Live Website:
+
+https://archers-by-gptc.netlify.app/
+
+---
+
+## Key Lessons Learned
+
+- Coding is only one part of web development.
+- Content strategy is equally important.
+- Branding influences user perception.
+- Structure and wording require significant planning.
+- Good websites solve communication problems, not just technical problems.
+
+---
+
+## Reflection
+
+Building this project helped me understand that frontend development is not only about writing code.
+
+A large part of the process involves:
+
+- Research
+- User thinking
+- Branding
+- Content organization
+- Visual hierarchy
+- Decision making
+
+This project was an important step in my Full Stack Development journey.
+
+---
+
+Day 07 Completed ✅
