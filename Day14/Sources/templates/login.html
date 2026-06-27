@@ -1,0 +1,174 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign In - PrimeAuth</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "outline-variant": "#c3c6d7",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "on-secondary-fixed": "#00174b",
+                        "on-error": "#ffffff",
+                        "outline": "#737686",
+                        "inverse-on-surface": "#eef0ff",
+                        "primary-container": "#2563eb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "tertiary": "#943700",
+                        "surface": "#faf8ff",
+                        "background": "#faf8ff",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-surface": "#283044",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "secondary": "#495c95",
+                        "primary": "#004ac6",
+                        "on-secondary-container": "#394c84",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#434655",
+                        "surface-container": "#eaedff",
+                        "surface-variant": "#dae2fd",
+                        "secondary-container": "#acbfff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error-container": "#93000a",
+                        "on-background": "#131b2e",
+                        "surface-container-high": "#e2e7ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "secondary-fixed": "#dbe1ff",
+                        "tertiary-container": "#bc4800",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#31447b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- TopAppBar Section (Shared Component) -->
+<header class="bg-surface dark:bg-on-surface w-full py-stack-md flex justify-center items-center px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-center w-full">
+<span class="font-display text-headline-md font-bold text-primary dark:text-primary-fixed cursor-pointer transition-all duration-200 hover:opacity-80 transition-opacity">#Store</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-start w-full px-margin-mobile mt-stack-lg">
+<!-- Auth Card -->
+<div class="login-card bg-surface-container-lowest w-full max-w-[360px] p-stack-lg rounded-lg">
+<h1 class="font-headline-md text-headline-md mb-stack-md text-on-surface">Sign in or create account</h1>
+<!-- Identification Form -->
+<form action="#" class="space-y-stack-md" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Email</label>
+<input class="w-full px-stack-md py-stack-sm border border-outline-variant rounded-lg font-body-md text-on-surface bg-surface-container-lowest transition-all focus:border-primary-container" id="email" name="email" placeholder="Enter your email address" required="" type="email">
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-label-md font-bold cursor-pointer transition-all duration-200 hover:opacity-90 active:scale-[0.98]" type="submit">
+                    Continue
+                </button>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center mt-stack-sm">
+                    By continuing, you agree to #Store's <a class="text-primary hover:underline" href="#">Conditions of Use</a> and <a class="text-primary hover:underline" href="#">Privacy Notice</a>.
+                </p>
+</form>
+<!-- Divider -->
+<div class="relative flex py-stack-lg items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-on-surface-variant font-label-sm text-label-sm">OR</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Provider -->
+<button class="w-full flex items-center justify-center gap-stack-sm border border-outline-variant py-stack-sm rounded-lg font-label-md text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
+<!-- SVG Google Icon (Simplified) -->
+<svg height="18" viewBox="0 0 18 18" width="18">
+<path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"></path>
+<path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"></path>
+<path d="M3.964 10.71a5.41 5.41 0 0 1 0-3.42V4.958H.957a8.991 8.991 0 0 0 0 8.084l3.007-2.332z" fill="#FBBC05"></path>
+<path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.483 0 2.443 2.017.957 4.958l3.007 2.332c.708-2.127 2.692-3.71 5.036-3.71z" fill="#EA4335"></path>
+</svg>
+                Continue with Google
+            </button>
+<!-- Secondary CTA -->
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant">
+
+
+</div>
+</div>
+<!-- Atmospheric Visual Element (Non-intrusive) -->
+<div class="mt-stack-lg max-w-[360px] w-full px-4 text-center opacity-40">
+
+</div>
+</main>
+<!-- Footer Section (Shared Component) -->
+<footer class="flex flex-col items-center gap-stack-sm w-full mt-auto bg-surface dark:bg-on-surface py-stack-lg border-t border-outline-variant dark:border-outline">
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors cursor-pointer" href="#">Conditions of Use</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors cursor-pointer" href="#">Privacy Notice</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors cursor-pointer" href="#">Help</a>
+</div>
+</footer>
+
+
+
+</body></html>
